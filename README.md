@@ -1,6 +1,20 @@
-# Atelier 智能助手 · FastAPI ReAct Agent
+# Atelier 智能助手
 
-面向实训与课程场景的**多模态对话智能体**：基于 FastAPI + ReAct 工具循环，支持日常对话、联网检索、知识库 RAG、文生图/文生视频、附件解析与代码沙箱；配套 React 前端，提供 SSE 流式体验与用户隔离的会话管理。
+<p align="center">
+  <img src="https://img.shields.io/badge/FastAPI-0.111+-009688" alt="FastAPI">
+  <img src="https://img.shields.io/badge/ReAct-Agent-8A2BE2" alt="ReAct Agent">
+  <img src="https://img.shields.io/badge/React-19-61DAFB" alt="React">
+  <img src="https://img.shields.io/badge/Python-3.10+-3776AB" alt="Python">
+  <img src="https://img.shields.io/badge/Redis%20Stack-Vector-DC382D" alt="Redis Stack">
+  <img src="https://img.shields.io/badge/RAG-Knowledge%20Base-blue" alt="RAG">
+  <img src="https://img.shields.io/badge/License-MIT-yellow" alt="License">
+</p>
+
+<p align="center">
+  面向实训与课程场景的 <b>多模态 ReAct 智能体</b>：FastAPI 工具循环 + 知识库 RAG + React 流式对话
+</p>
+
+---
 
 > 默认可在 Mock Provider 下本地运行；接入 [火山方舟](https://console.volcengine.com/ark) 后即可使用 Doubao 对话、Seedream 绘图、Seedance 视频与向量嵌入等真实能力。
 
