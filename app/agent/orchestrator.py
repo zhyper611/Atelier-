@@ -89,7 +89,6 @@ class AgentOrchestrator:
             tool_timeout_seconds=tool_timeout_seconds,
             video_tool_timeout_seconds=video_tool_timeout_seconds,
             tool_retry_max_attempts=tool_retry_max_attempts,
-            code_exec_timeout_seconds=settings.code_exec_timeout_seconds,
             fetch_tool_timeout_seconds=(
                 settings.fetch_url_timeout_seconds * settings.fetch_url_max_urls_per_call
                 + 5

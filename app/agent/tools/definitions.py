@@ -59,23 +59,6 @@ TOOL_DEFINITIONS: list[dict] = [
     {
         "type": "function",
         "function": {
-            "name": "run_python",
-            "description": "在本机沙箱中执行短段 Python 代码，用于数据处理、验证算法等。",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "code": {
-                        "type": "string",
-                        "description": "Python 代码，禁止 import 与文件/网络操作",
-                    },
-                },
-                "required": ["code"],
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
             "name": "search_knowledge",
             "description": (
                 "从用户知识库检索课程资料、实验手册、公司文档等已上传内容。"

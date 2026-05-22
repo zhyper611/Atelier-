@@ -131,9 +131,6 @@ function AppContent({ user, onLogout }: AppContentProps) {
     if (activeTool === "calc") {
       return "正在计算…";
     }
-    if (activeTool === "code") {
-      return "正在运行代码…";
-    }
     if (activeTool === "document") {
       return "正在解析文档…";
     }

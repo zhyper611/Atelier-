@@ -22,7 +22,6 @@ const toolNameLabels: Record<string, string> = {
   generate_image: "文生图",
   generate_video: "文生视频",
   calculator: "计算器",
-  run_python: "代码运行",
   parse_document: "文档解析",
   analyze_image: "识图",
   search_knowledge: "知识库检索",

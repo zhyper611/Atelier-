@@ -38,13 +38,10 @@ def _timeout_for_tool(
     name: str,
     default_timeout: float,
     video_timeout: float,
-    code_timeout: float,
     fetch_timeout: float,
 ) -> float:
     if name == "generate_video":
         return video_timeout
-    if name == "run_python":
-        return code_timeout
     if name == "fetch_url":
         return fetch_timeout
     return default_timeout
@@ -101,7 +98,6 @@ async def execute_tool_calls(
     context: ToolExecutionContext,
     tool_timeout_seconds: float = 120.0,
     video_tool_timeout_seconds: float = 600.0,
-    code_exec_timeout_seconds: float = 10.0,
     fetch_tool_timeout_seconds: float = 60.0,
     max_attempts: int = 2,
 ) -> list[ToolCallOutcome]:
@@ -113,7 +109,6 @@ async def execute_tool_calls(
             call.name,
             tool_timeout_seconds,
             video_tool_timeout_seconds,
-            code_exec_timeout_seconds,
             fetch_tool_timeout_seconds,
         )
         try:

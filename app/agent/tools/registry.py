@@ -8,7 +8,6 @@ from app.agent.react.schemas import ToolExecutionResult
 from app.agent.schemas import ChatMessage, RequestOptions, ToolResult
 from app.agent.session_context import message_references_session_image, resolve_video_reference_image
 from app.agent.tools.calculator import safe_evaluate
-from app.agent.tools.code_runner import CodeSafetyError, run_python_code
 from app.agent.tools.document_parser import parse_attachment_text
 from app.agent.tools.params import coalesce_duration, coalesce_size
 from app.agent.tools.url_fetcher import (
@@ -130,36 +129,6 @@ class ToolRegistry:
                 observation=f"计算结果：{expression} = {result}",
                 tool_result=tool_result,
             )
-
-        if name == "run_python":
-            code = str(args.get("code") or "").strip()
-            if not code:
-                return ToolExecutionResult(observation="run_python 缺少 code 参数。")
-            try:
-                stdout, stderr = await run_python_code(
-                    code,
-                    timeout_seconds=float(self.settings.code_exec_timeout_seconds),
-                    max_output_chars=self.settings.code_exec_max_output_chars,
-                )
-            except CodeSafetyError as exc:
-                return ToolExecutionResult(observation=f"代码安全检查失败：{exc}")
-            except TimeoutError as exc:
-                return ToolExecutionResult(observation=str(exc))
-            except Exception as exc:
-                return ToolExecutionResult(observation=f"代码执行失败：{exc}")
-
-            output_parts = []
-            if stdout.strip():
-                output_parts.append(f"stdout:\n{stdout}")
-            if stderr:
-                output_parts.append(f"stderr:\n{stderr}")
-            observation = "\n".join(output_parts) if output_parts else "代码执行完成，无输出。"
-            tool_result = ToolResult(
-                type="code",
-                content=stdout or stderr,
-                metadata={"stderr": stderr},
-            )
-            return ToolExecutionResult(observation=observation, tool_result=tool_result)
 
         if name == "search_knowledge":
             if self.knowledge_store is None or not self.knowledge_store.enabled:

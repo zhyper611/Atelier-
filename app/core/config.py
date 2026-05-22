@@ -59,8 +59,6 @@ class Settings(BaseSettings):
     planning_min_message_chars: int = Field(default=60, ge=0)
     attachments_dir: str = "data/attachments"
     attachment_max_bytes: int = Field(default=5_242_880, ge=1024)
-    code_exec_timeout_seconds: int = Field(default=10, ge=1)
-    code_exec_max_output_chars: int = Field(default=8000, ge=100)
     session_store: Literal["memory", "redis"] = "memory"
     redis_url: str = "redis://127.0.0.1:6379/0"
     session_ttl_seconds: int = Field(default=0, ge=0)

@@ -59,7 +59,6 @@
 | `parse_document` | 解析当前会话 PDF/文本附件 |
 | `analyze_image` | 多模态识图 |
 | `calculator` | 安全表达式计算 |
-| `run_python` | 本机 Python 沙箱执行（实训/demo） |
 | `generate_image` | 文生图（Seedream 等） |
 | `generate_video` | 文生视频 / 图生视频（Seedance 等） |
 
@@ -258,7 +257,6 @@ ENABLE_AGENT_PLANNING=true
 AGENT_MAX_STEPS=10
 ATTACHMENTS_DIR=data/attachments
 ATTACHMENT_MAX_BYTES=5242880
-CODE_EXEC_TIMEOUT_SECONDS=10
 ```
 
 ### 知识库
@@ -428,7 +426,6 @@ python scripts/ping_redis.py
 ## 安全说明
 
 - **JWT_SECRET**：生产环境务必使用 ≥32 字符的随机密钥，勿使用默认值 `change-me-in-production`。  
-- **run_python**：在本机子进程沙箱中执行，仅适合实训/demo；**勿在未隔离环境对公网直接暴露**。  
 - **fetch_url**：默认屏蔽 localhost 等内网域名，可在 `FETCH_URL_BLOCKED_DOMAINS` 中调整。  
 - **密钥**：勿将 `.env`、API Key 提交至版本库；`.gitignore` 应排除 `data/`、`.env` 等敏感路径。  
 

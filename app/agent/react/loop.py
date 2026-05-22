@@ -65,7 +65,6 @@ def _tool_sse_name(tool_name: str) -> str:
         "generate_image": "image",
         "generate_video": "video",
         "calculator": "calc",
-        "run_python": "code",
         "parse_document": "document",
         "analyze_image": "vision",
         "search_knowledge": "knowledge",
@@ -159,7 +158,6 @@ class ReActLoop:
         tool_timeout_seconds: int = 120,
         video_tool_timeout_seconds: int = 600,
         tool_retry_max_attempts: int = 2,
-        code_exec_timeout_seconds: int = 10,
         fetch_tool_timeout_seconds: int = 60,
         attachment_store: AttachmentStore | None = None,
         knowledge_retriever: KnowledgeRetriever | None = None,
@@ -172,7 +170,6 @@ class ReActLoop:
         self.tool_timeout_seconds = tool_timeout_seconds
         self.video_tool_timeout_seconds = video_tool_timeout_seconds
         self.tool_retry_max_attempts = tool_retry_max_attempts
-        self.code_exec_timeout_seconds = code_exec_timeout_seconds
         self.fetch_tool_timeout_seconds = fetch_tool_timeout_seconds
         self.attachment_store = attachment_store
 
@@ -561,7 +558,6 @@ class ReActLoop:
                         context=tool_context,
                         tool_timeout_seconds=float(self.tool_timeout_seconds),
                         video_tool_timeout_seconds=float(self.video_tool_timeout_seconds),
-                        code_exec_timeout_seconds=float(self.code_exec_timeout_seconds),
                         fetch_tool_timeout_seconds=float(self.fetch_tool_timeout_seconds),
                         max_attempts=self.tool_retry_max_attempts,
                     )
